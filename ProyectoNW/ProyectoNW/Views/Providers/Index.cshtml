@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ProyectoNW.Models.Provider>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped table-hover  ">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProviderName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProviderContact)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr  class="bg-info">
+        <td>
+            @Html.DisplayFor(modelItem => item.ProviderName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProviderContact)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProviderKey }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ProviderKey }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProviderKey }, new { @class = "btn btn-primary" })
+        </td>
+    </tr>
+}
+
+</table>

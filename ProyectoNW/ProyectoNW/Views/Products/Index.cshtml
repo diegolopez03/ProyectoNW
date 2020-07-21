@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ProyectoNW.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Productos</h2>
+<style>
+    .thumbnail img {
+        max-height: 150px;
+    }
+</style>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+
+            <div class="thumbnail ">
+
+                <img src="@Html.DisplayFor(modelItem => item.ProductImage)" />
+                <div class="caption">
+                    <br>  @Html.DisplayFor(modelItem => item.ProductNombre)<br />
+                    categoria:
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName)<br />
+                    Precio:
+                   
+                    @Html.DisplayFor(modelItem => item.ProductPrice)<br />
+
+
+
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+
+
+                </div>
+            </div>
+
+        </div>
+    }
+</div>

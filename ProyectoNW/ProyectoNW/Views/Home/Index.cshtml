@@ -1,0 +1,116 @@
+﻿@model IEnumerable<ProyectoNW.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>KelenaMarket</h2>
+
+<div class="row carousel-holder marginTo">
+    <div class="col-md-12">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img class="slide-image" src="~/Images/carousel1.jpg" alt="">
+                </div>
+                <div class="item">
+                    <img class="slide-image" src="~/Images/carousel2.jpg" alt="">
+                </div>
+                <div class="item">
+                    <img class="slide-image" src="~/Images/carousel3.jpg" alt="">
+                </div>
+            </div>
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="thumbnail">
+
+            <img src="https://s1.eestatic.com/2019/11/05/ciencia/nutricion/Carne-Cerdo-Nutricion-Nutricion_442217741_137160364_1024x576.jpg" alt="Lights" style="width:100%">
+            <div class="caption">
+                <li>@Html.ActionLink("Carnes", "Galeria", new { id = 3 })</li>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="thumbnail">
+
+            <img src="https://cdn.hispantv.com/hispanmedia/files/images/thumbnail/20190709/1340323_xl.jpg" alt="Nature" style="width:100%">
+            <div class="caption">
+                <li>@Html.ActionLink("Lacteos", "Galeria", new { id = 1 })</li>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="thumbnail">
+
+            <img src="https://www.hosteleriasalamanca.es/fotos/1571213043.5153.jpg" alt="Nature" style="width:100%">
+            <div class="caption">
+                <li>@Html.ActionLink("Panes", "Galeria", new { id = 2 })</li>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+<style>
+    .thumbnail img {
+        max-height: 150px;
+    }
+</style>
+
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+
+            <div class="thumbnail ">
+
+                <img src="@Html.DisplayFor(modelItem => item.ProductImage)" />
+                <div class="caption">
+                    @Html.DisplayFor(modelItem => item.ProductNombre)
+
+                    @Html.DisplayFor(modelItem => item.ProductPrice)<br />
+
+
+                    categoria:
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName)<br />
+                    Precio:
+
+                    @Html.DisplayFor(modelItem => item.ProductPrice)<br />
+
+
+
+                    @Html.ActionLink("Agregar", "", new { id = item.ProductId }, new { @class = "btn btn-warning" })
+
+
+
+                </div>
+            </div>
+
+        </div>
+    }
+</div>
